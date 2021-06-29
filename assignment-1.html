@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+</head>
+<body>
+    <script>
+        function Product(name, brand, price) {
+            this.name = name;
+            this.brand = brand;
+            this.price = price;
+        }
+
+        const product1 = new Product('Iphone','Apple',600);
+        const product2 = new Product('Pixel','Google',400);
+        const product3 = new Product('One Plus 9','One Plus',500);
+        const product4 = new Product('Laptop','Dell',1600);
+        const product5 = new Product('Battery','Samsung',100);
+        const product6 = new Product('Earphones','Sony',200);
+
+        let productList = [product1, product2, product3, product4, product5, product6];
+
+        let productListView = productList;
+
+        // printing product name on console
+        productListView.forEach(elm=> console.log(`${elm.name} from ${elm.brand} is priced at INR:${elm.price}`))
+        
+        //price sorting data by Ascending
+        console.log(' ')
+        const priceSortAsending = [...productListView].sort((a,b)=> a.price - b.price);
+        console.log('//Price Sort Asending')
+        console.log(priceSortAsending);
+
+        //price sorting data by Decending
+        console.log(' ')
+        const priceSortDecending = [...productListView].sort((a,b)=> b.price - a.price);
+        console.log('//Price Sort Desending')
+        console.log(priceSortDecending);
+
+
+        // letter sorting data by Ascending
+        console.log(' ');
+        const letterSortAsending = [...productListView].sort((a,b)=> {
+            if (a.name[0] < b.name[0])  return  -1
+             else if (a.name[0] > b.name[0]) return 1
+             else return 0
+        });
+        console.log('//Letter Sort Asending');
+        console.log(letterSortAsending);
+
+        //letter sorting data by Decending
+        console.log(' ')
+        const letterSortDecending = [...productListView].sort((a,b)=> {
+            if (a.name[0] > b.name[0])  return  -1
+             else if (a.name[0] < b.name[0]) return 1
+             else return 0
+        });
+        console.log('//letter Sort Desending')
+        console.log(letterSortDecending);
+
+
+        //filter with searchString
+        console.log('')
+        const filterString = (arr,searchString) => arr.filter(e => e.name.toLowerCase().includes(searchString.toLowerCase()))
+        console.log('filter product with search string')
+        console.log(filterString([...productListView],'pix'))
+
+        // String format with pipe        
+        const returnString = arr => arr.map(e => `${e.name},${e.brand},${e.price}`).join('|')
+        console.log('')
+        console.log('String format with pipe')
+        console.log(returnString([...productListView]))
+
+    </script>
+</body>
+
+</html>
